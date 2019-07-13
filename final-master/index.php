@@ -80,19 +80,6 @@
                 </li>';
                 else echo '<li><a href="login.php">התחבר</a></li>'?>
 
-<!-- 
-                <li class="dropdown" id="wi"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span
-                  <!-- class="glyphicon glyphicon-user"  id="icon-Nav"></span><?php if(isset($_SESSION["name"]))echo $_SESSION["name"]; else echo '<a href="login.php>התחבר</a>'; ?>  <b class="caret"></b></a> 
-                  <ul class="dropdown-menu" id="wi2">
-                      <li><a href="#"><span class="glyphicon glyphicon-user"></span>פרופיל</a></li>
-                      <li><a href="#"><span class="glyphicon glyphicon-cog"></span>הגדרות</a></li>
-                      <li class="divider"></li>
-                      <li><a href="logout.php"><span class="glyphicon glyphicon-off"></span>Logout</a></li>
-                    </ul>
-                  </li>
-              </ul>  
-                         -->
-
 
               <a id="Logo" href="index.html">
                   <span class="fa fa-paw paw1"></span>
@@ -131,12 +118,19 @@
                   </div>
                   <div class="collapse navbar-collapse" id="moveRight">
                     <ul class="nav navbar-nav" id="wi">
-                        <li class="active"><a href="#">הגדרות</a></li>
+                    <?php if(isset($_SESSION["name"])) echo '
+                    <li class="active"><a href="#">הגדרות</a></li>
                       <li class="active"><a href="#">טיפול משמעת</a></li>
                       <li class="active"><a href="#"> WIFI מעקב </a></li>
                       <li class="active"><a href="#"> GPS מעקב </a></li>
                       <li class="active"><a href="listDogsPage.html">הכלבים שלי</a></li>   
-                      <li><a href="index.html">בית</a></li>
+                      <li><a href="index.php">בית</a></li>';
+                      else echo '  <li class="active"><a href="login.php">הגדרות</a></li>
+                      <li class="active"><a href="login.php">טיפול משמעת</a></li>
+                      <li class="active"><a href="login.php"> WIFI מעקב </a></li>
+                      <li class="active"><a href="login.php"> GPS מעקב </a></li>
+                      <li class="active"><a href="login.php">הכלבים שלי</a></li>   
+                      <li><a href="index.php">בית</a></li>';?>
                     </ul>
                   </div><!--/.nav-collapse -->
                 </div>               
