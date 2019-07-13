@@ -1,3 +1,67 @@
+<?php session_start();
+include 'php/joins/db.php';
+
+
+ 
+
+
+
+$Dname = $_GET["name"];
+$Owner = $_SESSION["id"];
+$chipId = $_GET["chipId"];
+$breed = $_GET["breed"];
+$gender = $_GET["gender"];
+$id=$_SESSION["id"];
+if (!empty($_GET["birthDate"])) {
+  $birthDate = $_GET["birthDate"];
+}
+else {$birthDate = null;}
+
+
+if (!empty($_GET["height"])) {
+$height = $_GET["height"];
+}
+else {
+$height = null;}
+
+if (!empty($_GET["weight"])) {
+  $weight = $_GET["weight"];
+}
+else {
+  $weight = null;}
+
+  
+
+//insert to mysql
+$query  = "INSERT INTO `studDB19a`.`tb_dogs_212`(`snum`, `name`, `breed`, `age`, `weight`, `height`, `gender`) 
+VALUES ('".$chipId."','" .$Dname."','".$breed."','".$birthDate."','".$weight."','".$height."','".$gender."');";
+$result=mysqli_query($connection, $query);
+if (!$result) {
+  $message2 = "הכלב כבר רשום במערכת";
+  $flag=1;
+  
+} else {
+ 
+$flag=0;
+if (mysqli_query($connection, $query)) {
+  echo "New record created successfully";
+} else {
+  //echo "Error: " . $query . "<br>" . mysqli_error($connection);
+  
+}
+
+$sql = "INSERT INTO `studDB19a`.`tb_user-dog_212`(`id`,`snum`)
+VALUES ('".$id."','" .$chipId."');";
+if (mysqli_query($connection, $sql)) {
+  echo "New record created successfully";
+} else {
+  echo "Error: " . $sql . "<br>" . mysqli_error($connection);
+}
+}
+mysqli_close($connection);
+         
+
+?>
 <!DOCTYPE html>
 <html>
 
@@ -12,7 +76,7 @@
         <link rel="stylesheet" href="includes/style.css">
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-        
+        <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
         
     <body id="wrapper">
@@ -60,19 +124,19 @@
                           </ul>
                         </li>
                         <li class="dropdown" id="wi"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span
-                          class="glyphicon glyphicon-user"  id="icon-Nav"></span>שרון <b class="caret"></b></a>
+                          class="glyphicon glyphicon-user"  id="icon-Nav"></span><?php echo $_SESSION["name"];?> <b class="caret"></b></a>
                           <ul class="dropdown-menu" id="wi2">
                               <li><a href="#"><span class="glyphicon glyphicon-user"></span>פרופיל</a></li>
                               <li><a href="#"><span class="glyphicon glyphicon-cog"></span>הגדרות</a></li>
                               <li class="divider"></li>
-                              <li><a href="#"><span class="glyphicon glyphicon-off"></span>Logout</a></li>
+                              <li><a href="logout.php"><span class="glyphicon glyphicon-off"></span>Logout</a></li>
                             </ul>
                           </li>
                       </ul>  
                                 
         
         
-                      <a id="Logo" href="index.html">
+                      <a id="Logo" href="index.php">
                           <span class="fa fa-paw paw1"></span>
                           <h1 class="Hdog">Dog </h1>
                           <span class="logoIMG"></span> 
@@ -114,7 +178,7 @@
                               <li class="active"><a href="#"> WIFI מעקב </a></li>
                               <li class="active"><a href="#"> GPS מעקב </a></li>
                               <li class="active"><a href="listDogsPage.html">הכלבים שלי</a></li>   
-                              <li><a href="index.html">בית</a></li>
+                              <li><a href="index.php">בית</a></li>
                             </ul>
                           </div><!--/.nav-collapse -->
                         </div>               
@@ -122,15 +186,7 @@
         </header>
 
         <main>
-            <?php
-            $Dname = $_GET["name"];
-            $Owner = $_GET["Owne"];
-            $chipId = $_GET["cId"];
-            $birthDate = $_GET["bDay"];
-            $Owner = $_GET["Owne"];
-            $chipId = $_GET["cId"];
-            $birthDate = $_GET["bDay"];
-            ?>
+
             <div class="container">    
                 <div class="row">
                   <div class="panel panel-default">
@@ -139,67 +195,27 @@
                         <div class="panel-body">
                             <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
                             <img alt="User Pic" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" id="profile-image1" class="img-circle img-responsive"> 
-                        </div>
+                      </div>
                         <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8" >
                             <div class="container" >
-                                <h2><?php echo $Dname ?></h2>
-                                <p>נוצר על ידי:  <b><?php echo $Owner ?></b></p>                                                   
+                            <?php if($flag!=1) echo '    <h2>'.$Dname.'</h2>
+                                <p>נוצר על ידי:  <b>'.$_SESSION["name"].'</b></p>                                                   
                             </div>
                             <hr>
                                 <ul class="container details" >
-                                    <li><p>מספר ציפ: <?php echo $chId ?></p></li>
-                                    <li><p> תאריך לידה<?php echo $bDay ?></p></li>
+                                    <li><p>מספר ציפ:'.$chipId.'</p></li>
+                                    <li><p> תאריך לידה: '.$birthDate.'</p></li>
                                 </ul>
                             <hr>
-                        <div class="col-sm-5 col-xs-6 tital " >תאריך ההוספה : 6 מאי </div>
-                        <?php echo '<a href="listDogsPage.html" class="btn btn-primary btn-lg active " id="finalize" role="button">סיום</a></div>' ?>
+                        <div class="col-sm-5 col-xs-6 tital " >תאריך ההוספה :'.date("d/m/Y").'</div>
+                        <a href="listDogsPage.html" class="btn btn-primary btn-lg active " id="finalize" role="button">סיום</a></div>';
+                        else echo '<h2>'. $message2 .'</h2>
+                        <a href="AddDogPage.php" class="btn btn-primary btn-lg active " id="finalize" role="button">חזור</a></div>' ?>;
                     </div>
                 </div>
             </div>
             </div>
-
-
-
-            
-
-
-            <div class="container">
-                <div class="col-xs-20 col-md-10 col-md-offset-4 col-xs-offset-3">
-                     <?php 
-                    $myFile = "dogsData.json";
-                    $arr_data = array(); 
-                    $formdata = array(
-                        'name'=> $_GET["name"],
-                        'breed'=> $_GET["breed"],
-                        'age'=>$_GET['age'],
-                        'height'=> $_GET['height'],
-                        'weight'=> $_GET['weight'],
-                        'gender'=> $_GET['gender']
-                     );
-                     // Push user data to array
-	   array_push($arr_data,$formdata);
-       //Convert updated array to JSON
-	   $jsondata = json_encode($arr_data, JSON_PRETTY_PRINT);
-	   
-	   //write json data into data.json file
-	   if(file_put_contents($myFile, $jsondata)) {
-            echo '<h2><br><br><br> המידע נשמר בהצלחה<br></h2>
-            <div class="col-xs-20 col-md-10 col-md-offset-1 col-xs-offset-3">
-            <a href="listDogsPage.html" class="btn btn-primary btn-lg active " id="finalize" role="button">סיום</a></div>'
-            ;
-	    }
-	   else 
-	        echo "error";
-            ?>
-
-
-
-<div class="panel-heading">   <h4>  hhhhhה</h4> </div>
-
-
-                </div>
-            </div>
-
+              
                 
         </main>
 
