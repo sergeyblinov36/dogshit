@@ -1,67 +1,57 @@
+    
 <?php session_start();
-include 'php/joins/db.php';
-
-
- 
-
-
-
-$Dname = $_GET["name"];
-$Owner = $_SESSION["id"];
-$chipId = $_GET["chipId"];
-$breed = $_GET["breed"];
-$gender = $_GET["gender"];
-$id=$_SESSION["id"];
-if (!empty($_GET["birthDate"])) {
-  $birthDate = $_GET["birthDate"];
-}
-else {$birthDate = null;}
-
-
-if (!empty($_GET["height"])) {
-$height = $_GET["height"];
-}
-else {
-$height = null;}
-
-if (!empty($_GET["weight"])) {
-  $weight = $_GET["weight"];
-}
-else {
-  $weight = null;}
-
-  
-
-//insert to mysql
-$query  = "INSERT INTO `studDB19a`.`tb_dogs_212`(`snum`, `name`, `breed`, `age`, `weight`, `height`, `gender`) 
-VALUES ('".$chipId."','" .$Dname."','".$breed."','".$birthDate."','".$weight."','".$height."','".$gender."');";
-$result=mysqli_query($connection, $query);
-if (!$result) {
-  $message2 = "הכלב כבר רשום במערכת";
-  $flag=1;
-  
-} else {
- 
-$flag=0;
-if (mysqli_query($connection, $query)) {
-  echo "New record created successfully";
-} else {
-  //echo "Error: " . $query . "<br>" . mysqli_error($connection);
-  
-}
-
-$sql = "INSERT INTO `studDB19a`.`tb_user-dog_212`(`id`,`snum`)
-VALUES ('".$id."','" .$chipId."');";
-if (mysqli_query($connection, $sql)) {
-  echo "New record created successfully";
-} else {
-  echo "Error: " . $sql . "<br>" . mysqli_error($connection);
-}
-}
-mysqli_close($connection);
-         
-
+    include 'php/joins/db.php';
+    
+    $Dname = $_GET["name"];
+    $Owner = $_SESSION["id"];
+    $chipId = $_GET["chipId"];
+    $breed = $_GET["breed"];
+    $gender = $_GET["gender"];
+    $id=$_SESSION["id"];
+    if (!empty($_GET["birthDate"])) {
+        $birthDate = $_GET["birthDate"];
+    }
+    else {$birthDate = null;}
+    if (!empty($_GET["height"])) {
+        $height = $_GET["height"];
+    }
+    else {
+        $height = null;}
+    if (!empty($_GET["weight"])) {
+        $weight = $_GET["weight"];
+    }
+    else {
+        $weight = null;}
+    
+    //insert to mysql
+    $query  = "INSERT INTO `studDB19a`.`tb_dogs_212`(`snum`, `name`, `breed`, `age`, `weight`, `height`, `gender`) 
+    VALUES ('".$chipId."','" .$Dname."','".$breed."','".$birthDate."','".$weight."','".$height."','".$gender."');";
+    $result=mysqli_query($connection, $query);
+    if (!$result) {
+        $message2 = "הכלב כבר רשום במערכת";
+        $flag=1;
+    
+    } else {
+    
+        $flag=0;
+    if (mysqli_query($connection, $query)) {
+    echo "New record created successfully";
+    } else {
+    //echo "Error: " . $query . "<br>" . mysqli_error($connection);
+    
+    }
+    $sql = "INSERT INTO `studDB19a`.`tb_user-dog_212`(`id`,`snum`)
+    VALUES ('".$id."','" .$chipId."');";
+    if (mysqli_query($connection, $sql)) {
+    echo "New record created successfully";
+    } else {
+    echo "Error: " . $sql . "<br>" . mysqli_error($connection);
+    }
+    }
+    mysqli_close($connection);
+            
 ?>
+
 <!DOCTYPE html>
 <html>
 
@@ -76,128 +66,155 @@ mysqli_close($connection);
         <link rel="stylesheet" href="includes/style.css">
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
     </head>
         
     <body id="wrapper">
-        <header>
-                <div class="navbar navbar-custom navbar-static-top" id="colorHed">
-                  <div class="container">
-                    <div class="navbar-header" id="go-right">
-                      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+    <header>
+        <div class="navbar navbar-custom navbar-static-top" id="colorHed">
+          <div class="container">
+            <div class="navbar-header" id="go-right">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar" style="background-color: #fff;"></span>
+                <span class="icon-bar" style="background-color: #fff;"></span>
+                <span class="icon-bar" style="background-color: #fff;" ></span>
+              </button>
+
+
+              <ul class="nav navbar-nav navbar-left leftSise2" style="float: right;">
+                <li class="dropdown" id="wi"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span
+                  class="glyphicon glyphicon-bell" id="icon-Nav"></span><span class="label label-primary">42</span>
+                  </a>
+                </li>
+                                  <?php if(isset($_SESSION["name"]))
+                  echo '<li class="dropdown" id="wi"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span
+                  class="glyphicon glyphicon-user"  id="icon-Nav"></span>'.  $_SESSION["name"] .' </a>
+                  <ul class="dropdown-menu" id="wi2">
+                      <li><a href="#"><span class="glyphicon glyphicon-user"></span>פרופיל</a></li>
+                      <li><a href="#"><span class="glyphicon glyphicon-cog"></span>הגדרות</a></li>
+                      <li class="divider"></li>
+                      <li><a href="logout.php"><span class="glyphicon glyphicon-off"></span>Logout</a></li>
+                    </ul>
+                  </li>';
+                  else  echo '<li id="wi"><a href="login.php" ><span class="glyphicon glyphicon-user"  id="icon-Nav"></span> התחבר </a></li>'?>
+              </ul>
+                                                              
+
+              <ul class="nav navbar-nav navbar-left leftSise">
+                <li class="dropdown" id="wi"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span
+                    class="glyphicon glyphicon-bell" id="icon-Nav"></span>התראות <span class="label label-primary">42</span>
+                    </a>
+                    <ul class="dropdown-menu"  id="wi2">
+                        <li><a href="#"><span class="label label-warning">7:00 AM</span>גולי נמצאת באזור ספה</a></li>
+                        <li><a href="#"><span class="label label-warning">8:00 AM</span>דיבל 300 כ-4 דק</a></li>
+                        <li><a href="#"><span class="label label-warning">9:00 AM</span>גולי בחדר שלך רון </a></li>
+                        <li class="divider"></li>
+                        <li><a href="#" class="text-center">צפיה כל ההתראות</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown" id="wi"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span
+                  class="glyphicon glyphicon-envelope"  id="icon-Nav"></span>הודעות <span class="label label-info">32</span>
+                  </a>
+                  <ul class="dropdown-menu" id="wi2">
+                      <li><a href="#"><span class="label label-warning">4:00 AM</span>Favourites Snippet</a></li>
+                      <li><a href="#"><span class="label label-warning">4:30 AM</span>Email marketing</a></li>
+                      <li><a href="#"><span class="label label-warning">5:00 AM</span>Subscriber focused email
+                        design</a></li>
+                      <li class="divider"></li>
+                      <li><a href="#" class="text-center">View All</a></li>
+                  </ul>
+                </li>
+
+                  <?php if(isset($_SESSION["name"]))
+                  echo '<li class="dropdown" id="wi"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span
+                  class="glyphicon glyphicon-user"  id="icon-Nav"></span>'.  $_SESSION["name"] .' </a>
+                  <ul class="dropdown-menu" id="wi2">
+                      <li><a href="#"><span class="glyphicon glyphicon-user"></span>פרופיל</a></li>
+                      <li><a href="#"><span class="glyphicon glyphicon-cog"></span>הגדרות</a></li>
+                      <li class="divider"></li>
+                      <li><a href="logout.php"><span class="glyphicon glyphicon-off"></span>Logout</a></li>
+                    </ul>
+                  </li>';
+                  else  echo '<li id="wi"><a href="login.php" ><span class="glyphicon glyphicon-user"  id="icon-Nav"></span> התחבר </a></li>'?>
+                </li>
+              </ul>
+
+
+              <a id="Logo" href="index.php">
+                  <span class="fa fa-paw paw1"></span>
+                  <h1 class="Hdog">Dog </h1>
+                  <span class="logoIMG"></span> 
+                  <h1 class="Hfetch"> Fetch</h1> 
+                  <span class="fa fa-paw paw2"></span>                            
+              </a>  
+                            
+                          
+              </div>
+                <div class="collapse navbar-collapse" id="fix">
+                  <ul class="nav navbar-nav" id="onlyapp" id="moveRight">
+                  <?php if(isset($_SESSION["name"])) echo '
+                      <li><a href="#"><img src="images/avatar.svg" class="imagHumborger">הגדרות פרפיל </a></li>
+                      <li class="active"><a href="listDogsPage.php"><img src="images/add-dog.svg" class="imagHumborger">הכלבים שלי</a></li>   
+                      <li class="active"><a href="#"><img src="images/animal.svg" class="imagHumborger">מעקב טיפול</a></li>
+                      <li class="active"><a href="listDOT.php"><img src="images/dot.svg" class="imagHumborger">אזורים אזורים</a></li>
+                      <li class="active"><a href="#"><img src="images/colar.svg" class="imagHumborger">מכשיר אלקטרוני</a></li>
+                      <li class="active"><a href="logout.php"><img src="images/logout.svg" class="imagHumborger"> התנתק\י</a></li>';
+                      else echo '<li><a href="#"><img src="images/avatar.svg" class="imagHumborger">הגדרות פרפיל </a></li>
+                      <li class="active"><a href="login.php"><img src="images/add-dog.svg" class="imagHumborger">הכלבים שלי</a></li>   
+                      <li class="active"><a href="login.php"><img src="images/animal.svg" class="imagHumborger">מעקב טיפול</a></li>
+                      <li class="active"><a href="login.php"><img src="images/dot.svg" class="imagHumborger">אזורים אזורים</a></li>
+                      <li class="active"><a href="login.php"><img src="images/colar.svg" class="imagHumborger">מכשיר אלקטרוני</a></li>';?>
+                </div><!--/.nav-collapse -->
+              </div>
+            </div>
+
+
+
+
+            <div class="navbar navbar-custom navbar-static-top" id="notonapp">
+              <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
-                      </button>
-        
-        
-                      <ul class="nav navbar-nav navbar-left leftSise2">
-                        <li class="dropdown" id="wi"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span
-                          class="glyphicon glyphicon-bell" id="icon-Nav"></span><span class="label label-primary">42</span>
-                          </a>
-                        </li>
-                      </ul>
-                                                                      
-        
-                      <ul class="nav navbar-nav navbar-left leftSise">
-                        <li class="dropdown" id="wi"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span
-                            class="glyphicon glyphicon-bell" id="icon-Nav"></span>התראות <span class="label label-primary">42</span>
-                            </a>
-                            <ul class="dropdown-menu"  id="wi2">
-                                <li><a href="#"><span class="label label-warning">7:00 AM</span>גולי נמצאת באזור ספה</a></li>
-                                <li><a href="#"><span class="label label-warning">8:00 AM</span>דיבל 300 כ-4 דק</a></li>
-                                <li><a href="#"><span class="label label-warning">9:00 AM</span>גולי בחדר שלך רון </a></li>
-                                <li class="divider"></li>
-                                <li><a href="#" class="text-center">צפיה כל ההתראות</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown" id="wi"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span
-                          class="glyphicon glyphicon-envelope"  id="icon-Nav"></span>הודעות <span class="label label-info">32</span>
-                          </a>
-                          <ul class="dropdown-menu" id="wi2">
-                              <li><a href="#"><span class="label label-warning">4:00 AM</span>Favourites Snippet</a></li>
-                              <li><a href="#"><span class="label label-warning">4:30 AM</span>Email marketing</a></li>
-                              <li><a href="#"><span class="label label-warning">5:00 AM</span>Subscriber focused email
-                                design</a></li>
-                              <li class="divider"></li>
-                              <li><a href="#" class="text-center">View All</a></li>
-                          </ul>
-                        </li>
-                        <li class="dropdown" id="wi"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span
-                          class="glyphicon glyphicon-user"  id="icon-Nav"></span><?php echo $_SESSION["name"];?> <b class="caret"></b></a>
-                          <ul class="dropdown-menu" id="wi2">
-                              <li><a href="#"><span class="glyphicon glyphicon-user"></span>פרופיל</a></li>
-                              <li><a href="#"><span class="glyphicon glyphicon-cog"></span>הגדרות</a></li>
-                              <li class="divider"></li>
-                              <li><a href="logout.php"><span class="glyphicon glyphicon-off"></span>Logout</a></li>
-                            </ul>
-                          </li>
-                      </ul>  
-                                
-        
-        
-                      <a id="Logo" href="index.php">
-                          <span class="fa fa-paw paw1"></span>
-                          <h1 class="Hdog">Dog </h1>
-                          <span class="logoIMG"></span> 
-                          <h1 class="Hfetch"> Fetch</h1> 
-                          <span class="fa fa-paw paw2"></span>                            
-                      </a>  
-                                    
-                                  
-                      </div>
-                        <div class="collapse navbar-collapse" id="fix">
-                          <ul class="nav navbar-nav" id="onlyapp" id="moveRight">
-                              <li><a href="#contact"><img src="images/avatar.svg" class="imagHumborger">הגדרות פרפיל </a></li>
-                              <li class="active"><a href="listDogsPage.html"><img src="images/add-dog.svg" class="imagHumborger">הכלבים שלי</a></li>   
-                              <li class="active"><a href="#"><img src="images/animal.svg" class="imagHumborger">מעקב טיפול</a></li>
-                              <li class="active"><a href="listDOT.html"><img src="images/dot.svg" class="imagHumborger">אזורים אזורים</a></li>
-                              <li class="active"><a href="#"><img src="images/colar.svg" class="imagHumborger">מכשיר אלקטרוני</a></li>
-                              <li class="active"><a href="#"><img src="images/logout.svg" class="imagHumborger"> התנתק\י</a></li>
-                          </ul>
-                        </div><!--/.nav-collapse -->
-                      </div>
-                    </div>
-        
-        
-        
-        
-                    <div class="navbar navbar-custom navbar-static-top" id="notonapp">
-                      <div class="container">
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                          </div>
-                          <div class="collapse navbar-collapse" id="moveRight">
-                            <ul class="nav navbar-nav" id="wi">
-                                <li class="active"><a href="#">הגדרות</a></li>
-                              <li class="active"><a href="#">טיפול משמעת</a></li>
-                              <li class="active"><a href="#"> WIFI מעקב </a></li>
-                              <li class="active"><a href="#"> GPS מעקב </a></li>
-                              <li class="active"><a href="listDogsPage.html">הכלבים שלי</a></li>   
-                              <li><a href="index.php">בית</a></li>
-                            </ul>
-                          </div><!--/.nav-collapse -->
-                        </div>               
-                      </div>
-        </header>
+                    </button>
+                  </div>
+                  <div class="collapse navbar-collapse" id="moveRight">
+                    <ul class="nav navbar-nav" id="wi">
+                    <?php if(isset($_SESSION["name"])) echo '
+                    <li class="active"><a href="#">הגדרות</a></li>
+                    <li class="active"><a href="table.php"> בקרת טיפול</a></li>
+                      <li class="active"><a href="#">טיפול משמעת</a></li>
+                      <li class="active"><a href="#"> WIFI מעקב </a></li>
+                      <li class="active"><a href="#"> GPS מעקב </a></li>
+                      <li class="active"><a href="listDogsPage.php">הכלבים שלי</a></li>   
+                      <li><a href="index.php">בית</a></li>';
+                      else echo '  <li class="active"><a href="login.php">הגדרות</a></li>
+                      <li class="active"><a href="table.php"> בקרת טיפול</a></li>
+                      <li class="active"><a href="login.php">טיפול משמעת</a></li>
+                      <li class="active"><a href="login.php"> WIFI מעקב </a></li>
+                      <li class="active"><a href="login.php"> GPS מעקב </a></li>
+                      <li class="active"><a href="login.php">הכלבים שלי</a></li>   
+                      <li><a href="index.php">בית</a></li>';?>
+                    </ul>
+                  </div><!--/.nav-collapse -->
+                </div>               
+              </div>
+      </header>
 
         <main>
-
             <div class="container">    
-                <div class="row">
+                <div class="row" id="moveforme">
                   <div class="panel panel-default">
-
-
                         <div class="panel-body">
                             <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
                             <img alt="User Pic" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" id="profile-image1" class="img-circle img-responsive"> 
-                      </div>
+                        </div>
                         <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8" >
-                            <div class="container" >
+
+
+                        <div class="container" >
                             <?php if($flag!=1) echo '    <h2>'.$Dname.'</h2>
                                 <p>נוצר על ידי:  <b>'.$_SESSION["name"].'</b></p>                                                   
                             </div>
@@ -212,10 +229,32 @@ mysqli_close($connection);
                         else echo '<h2>'. $message2 .'</h2>
                         <a href="AddDogPage.php" class="btn btn-primary btn-lg active " id="finalize" role="button">חזור</a></div>' ?>;
                     </div>
+
+
+
+
+
+
+                           <!-- <div >
+                                <h2><?php echo $name ?></h2>
+                                <p>נוצר על ידי:  <b><?php echo $Owner ?></b></p>                                                   
+                            </div>
+                            <hr>
+                                <ul >
+                                    <li><p>מספר ציפ: <?php echo $snum ?></p></li>
+                                    <li><p> תאריך לידה<?php echo $birthDate ?></p></li>
+                                </ul>
+                            <hr>
+                        <div class="col-sm-5 col-xs-6 tital " >תאריך ההוספה : 6 מאי </div>
+                        <?php echo '<a href="listDogsPage.html" class="btn btn-primary btn-lg active " id="finalize" role="button">סיום</a></div>' ?>
+                    </div>
                 </div>
             </div>
-            </div>
-              
+            </div>-->
+
+
+
+        
                 
         </main>
 

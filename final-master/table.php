@@ -1,40 +1,30 @@
-<?php
-    include 'php/joins/db.php';
-    include "php/joins/config.php";
-    session_start();//on logout session_destroy();
-    if(!empty($_POST["email"])) { //true if form was submitted
-        $query  = "SELECT * FROM tbl_users_212 WHERE email='" 
-        . $_POST["email"] 
-        . "' and password = '"
-        . $_POST["password"]
-        ."'";
-        //echo $query;//can't start echo if header comes after it
-   
-        $result = mysqli_query($connection , $query);
-        $row    = mysqli_fetch_array($result);
-        
-        if(is_array($row)) {
-            $_SESSION["id"] = $row['id'];
-            $_SESSION["name"]= $row['name'];
-            header('Location: ' . URL . 'index.php');
-        } else {
-            $message = "Invalid Username or Password!";
-        }
-    }
-?> 
+<?php session_start();
+
+?>
 
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-        <!------ Include the above in your HEAD tag ---------->
+
+<head>
+
+        <title>DogFetch</title>
+        <meta charset="UTF-8">
         <link rel="stylesheet" href="includes/style.css">
-    </head>
-    <body id="wrapper">
-    <header>
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+ 
+</head>
+
+<body ןג="wrapper">
+<header>
         <div class="navbar navbar-custom navbar-static-top" id="colorHed">
           <div class="container">
             <div class="navbar-header" id="go-right">
@@ -166,37 +156,47 @@
                 </div>               
               </div>
       </header>
-        <main>
-            <div class="container">
-            
-                <div class="row" id="pwd-container">
-                    <div class="col-md-4"></div>
-                
-                <div class="col-md-4">
-                <section class="login-form">
-                    <form method="post" action="#" role="login">
-                        <img src="http://i.imgur.com/RcmcLv4.png" class="img-responsive" alt="" />
-                        <input type="email" name="email" placeholder="Email" required class="form-control input-lg" value="joestudent@gmail.com" />
-                        
-                        <input type="password" class="form-control input-lg" name="password" id="password" placeholder="Password" required="" />
-                        
-                        
-                        <div class="pwstrength_viewport_progress"></div>
-                        
-                        
-                        <button type="submit" name="go" class="btn btn-lg btn-primary btn-block">Sign in</button>
-                        <div>
-                        <div class="error-message"><?php if(isset($message)) { echo $message; } ?></div>
-                            <a href="#">Create account</a> or <a href="#">reset password</a>
-                        </div>
-                    
-                    </form>
-                
-                </section>  
+
+    <main>
+        <div class="form-row">
+            <div class="col-2">
+                <select class="form-control form-control-lg" name="Dogname" id="Dogname">
+                    <option value="all">שם הכלב</option>
+                </select>
             </div>
-                
-        </main>
+            <div class="col-2">
+                <select class="form-control form-control-lg" name="Time" id="Time">
+                    <option value="all">שעת התראה</option>
+                </select>
+            </div>
+            <div class="col-2">
+                <select class="form-control form-control-lg" name="Care" id="Care">
+                    <option value="all">טיפול</option>
+                </select>
+            </div>
+        
+        </div>
+        <form action="db.php" method="get">
+            <table id="table" class="table table-striped table-bordered mt-4 table-hover">
+                <thead class="table-success">
+                    <tr>
+                        <th scope="col"></th>
+                        <th id="stationName" scope="col">מטפל</th>
+                        <th scope="col">שם כלב</th>
+                        <th id="cityName" scope="col">שעת התראה</th>
+                        <th scope="col">טיפול</th>
+                        <th scope="col">מידע נוסף</th>
+                        <th scope="col">מידע נוסף</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </form>
 
-    </body>
-</html>
+    </main>
 
+    <footer></footer>
+    <script src="./includes/scripts.js"></script>
+</body>

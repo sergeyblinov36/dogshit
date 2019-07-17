@@ -5,18 +5,20 @@
 <!DOCTYPE html>
 <html>
 
-
     <head>
         <title>DogFetch</title>
         <meta charset="UTF-8">
+
         <link rel="stylesheet" href="includes/style.css">
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-        <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>  
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
-        
+
     <body id="wrapper">
     <header>
         <div class="navbar navbar-custom navbar-static-top" id="colorHed">
@@ -151,189 +153,174 @@
               </div>
       </header>
 
-
-
         <main>
-            <div class="container">
-                <form class="form-horizontal" id="moveform" role="form"action="confirm.php" method="GET" >
-                    <h2>הוספת כלב חדש</h2>
-                    <div class="form-group">
-                        <label for="firstName" class="col-sm-3 control-label">שם הכלב</label>
-                        <div class="col-sm-9">
-                            <input type="text" id="name" name="name" placeholder="Dogs Name" class="form-control"  required>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="lastName" class="col-sm-3 control-label">שם המטפל </label>
-                        <div class="col-sm-9">
-                            <input type="text" id="lastName" placeholder="Owners Name" name="id" class="form-control"  required>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="phoneNumber" class="col-sm-3 control-label">מספר ציפ אלקטרוני </label>
-                        <div class="col-sm-9">
-                            <input type="phoneNumber" id="phoneNumber" name="chipId" placeholder="Barkod Namber" class="form-control" required>
-                            <span class="help-block">מספר הציפ על גבי הקולר </span>
-                        </div>
-                    </div>
-                  
 
-                    <div class="form-group">
-                        <label for="birthDate" class="col-sm-3 control-label">תאריך לידה*</label>
-                        <div class="col-sm-9">
-                            <input type="date" id="birthDate" name="birthDate" class="form-control" required>
-                        </div>
+                <div class="container">
+                    <div class="row" id="namerow">
+                            <div class="col-xs-6 col-xs-offset-3">
+                                <h4 class="Hh3">נקודות אסורות</h4>
+                            </div>
+     
                     </div>
-              
-                    <div class="form-group">
-                            <label for="Height" class="col-sm-3 control-label">גובה* </label>
-                        <div class="col-sm-9">
-                            <input type="number" id="height" name="height" placeholder="Please write your height in centimetres" class="form-control">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                            <label for="weight" class="col-sm-3 control-label">משקל* </label>
-                        <div class="col-sm-9">
-                            <input type="number" id="weight" name="weight" placeholder="Please write your weight in kilograms" class="form-control">
-                        </div>
-                    </div>
+                        <div class="well" id="movelittle">
+                            <div class="media">
+                                <a class="pull-right" href="#">
+                                    <img class="media-object" src="images/spot3.png">
+                                </a>
+                                <div class="media-body">
+                                    <a href="profille.html" class="btn btn-footer1">המשך</a>
+                                    <h4 class="media-heading hH4">נקודה אסורה 1</h4>
+                                    <p class="text-right">"ספה מרכזית"</p>
+                                    <a href="#" class="btn btn-footer2">המשך</a>
 
-                    <div class="form-group">
-                            <label for="weight" class="col-sm-3 control-label">גזע </label>
-                            <select class="col-sm-9" id="breed" name="breed" value="" placeholder="בחר גזע" required >
-                                    <option> בחר גזע</option>
-                                    <option>לברדור</option>
-                                    <option>פינצר</option>
-                                    <option>פיטבול</option>
-                                    <option>מעורב</option>
-                                    <option>אחר</option>
-                            </select>
-                    </div>
 
-                    <div class="form-group">
-                        <label class="control-label col-sm-3">מין</label>
-                        <div class="col-sm-6">
-                            <div class="row">
-                                <div class="col-sm-4">
-                                    <label class="radio-inline">
-                                        <input type="radio"  name="gender" id="femaleRadio" value="Female">נקבה
-                                    </label>
-                                </div>
-                                <div class="col-sm-4">
-                                    <label class="radio-inline">
-                                        <input type="radio"  name="gender" id="maleRadio" value="Male">זכר
-                                    </label>
+
+                                    <p class="p2">רדיוס מרחק כ- 4 מטר </p>
+                                    <p class="p2">זמן התראה לאחר 2 דק </p>
+                                    <p class="p2">טיפול אוטומטי לא מופעל </p>
+                                    <p class="p2">נמצא על "ספה מרכזית" לאחרונה ב1 יוני </p>
+
+                                    <ul class="list-inline list-unstyled" style="float: right;">
+                                        <li><span><i class="glyphicon glyphicon-calendar"></i> עודכן ב2 באפריל </span></li>
+                                        <li>|</li>
+                                        <span><i class="glyphicon glyphicon-bell"></i> התראות </span>
+                                        <li>|</li>
+                                        <li>
+                                            <span class="glyphicon glyphicon-heart"></span>
+                                            <span class="glyphicon glyphicon-heart"></span>
+                                            <span class="glyphicon glyphicon-heart"></span>
+                                            <span class="glyphicon glyphicon-heart-empty"></span>
+                                            <span class="glyphicon glyphicon-heart-empty"></span>
+
+                                        </li>
+                                        <li>|</li>
+                                        <li>
+                                            <!-- Use Font Awesome http://fortawesome.github.io/Font-Awesome/ -->
+                                            <span><i class="glyphicon glyphicon-pencil"></i></span>
+                                            <span><i class="glyphicon glyphicon-map-marker"></i></span>
+                                            <span><i class="glyphicon glyphicon-picture"></i></span>
+                                        </li>
+                                    </ul>
+                            </div>
+                        </div>
+                        </div>
+
+
+                        <div class="well" id="well">
+                            <div class="media">
+                                <a class="pull-right" href="#">
+                                    <img class="media-object" src="images/spot2.png">
+                                </a>
+                                <div class="media-body">
+                                    <a href="#" class="btn btn-footer1">המשך</a>
+
+                                    <h4 class="media-heading hH4">נקודה אסורה 2</h4>
+                                    <p class="text-right">"דלת כניסה"</p>
+                                    <a href="#" class="btn btn-footer2">המשך</a>
+
+                                    <p class="p2">רדיוס מרחק כ- 1.5 מטר </p>
+                                    <p class="p2">זמן התראה לאחר 3 דק </p>
+                                    <p class="p2">טיפול אוטומטי מופעל שמע -הקלטה מספר 3 </p>
+                                    <p class="p2">נמצא על יד "דלת כניסה" לפני 40 דקות </p>
+
+                                    <ul class="list-inline list-unstyled" style="float: right;">
+                                        <li><span><i class="glyphicon glyphicon-calendar"></i> עודכן ב15 במאי </span></li>
+                                        <li>|</li>
+                                        <span><i class="glyphicon glyphicon-bell"></i> התראות</span>
+                                        <li>|</li>
+                                        <li>
+                                        <span class="glyphicon glyphicon-heart"></span>
+                                                    <span class="glyphicon glyphicon-heart"></span>
+                                                    <span class="glyphicon glyphicon-heart"></span>
+                                                    <span class="glyphicon glyphicon-heart"></span>
+                                                    <span class="glyphicon glyphicon-heart"></span>
+                                                    <span class="	glyphicon glyphicon-heart-empty"></span>
+                                        </li>
+                                        <li>|</li>
+                                        <li>
+                                        <!-- Use Font Awesome http://fortawesome.github.io/Font-Awesome/ -->
+                                            <span><i class="glyphicon glyphicon-pencil"></i></span>
+                                            <span><i class="glyphicon glyphicon-map-marker"></i></span>
+                                            <span><i class="glyphicon glyphicon-picture"></i></span>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
-                    </div> <!-- /.form-group -->
-
-
-                    <div class="form-group">
-                        <label for="Height" class="col-sm-3 control-label">התנהגות קיימת </label><br><br>
-                        <div class="listof">
-                            <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="materialChecked2" checked>
-                                <label class="form-check-label" for="materialChecked2">תוקפנות</label>
-                            </div><br>
-
-                            <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="materialChecked2" checked>
-                                <label class="form-check-label" for="materialChecked2">הריסת חפצים</label>
-                            </div><br>
-                            <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="materialChecked2" checked>
-                                <label class="form-check-label" for="materialChecked2">יללות ונביחות</label>
-                            </div><br>
-
-                            <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="materialChecked2" checked>
-                                <label class="form-check-label" for="materialChecked2">צרכים בבית</label>
-                            </div><br> 
-                        </div>                 
                     </div>
+                </div>
 
 
-                    <div class="form-group">
-                            <label  for="poto" class="col-sm-3 control-label">תמונות</label>
-                            <div class="col-sm-9">
-                                    <input type="file" class="form-control" id="input" name="pics" value="" placeholder="" multiple accept="image/*" >
-                            </div>
-                        </div>
+                
+                <a class="add" href="#">
+                    <button class="Mq2"><span class="glyphicon glyphicon-plus" id="size"></button>
+                </a>
 
-
-
-                    <div class="form-group">
-                        <div class="col-sm-9">
-                            <span class="help-block"></span>
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-block" name="save">שמור</button>
-                </form> <!-- /form -->
-            </div> <!-- ./container -->
         </main>
 
         <footer>
-            <div class="footer-top"> 
-               <div class="container">
-                 <div class="col-lg-2 col-xs-12 text-center">
-                     <a href="#"><i class="fa fa-facebook fa-2x"></i>Facebook</a>
-                 </div>
-                  <div class="col-lg-2 col-xs-12 text-center">
-                     <a href="#"><i class="fa fa-twitter fa-2x"></i>Twitter</a>
-                 </div>
-                  <div class="col-lg-2 col-xs-12 text-center">
-                     <a href="#"><i class="fa fa-flickr fa-2x"></i>Flickr</a>
-                 </div>
-                  <div class="col-lg-2 col-xs-12 text-center">
-                     <a href="#"><i class="fa fa-tumblr fa-2x"></i>Tumblr</a>
-                 </div>
-                  <div class="col-lg-2 col-xs-12 text-center">
-                     <a href="#"><i class="fa fa-github fa-2x"></i>Github</a>
-                 </div>
-                  <div class="col-lg-2 col-xs-12 text-center">
-                     <a href="#"><i class="fa fa-google-plus fa-2x"></i>Google</a>
-                 </div>
-               </div> 
-            </div>  
-            
-            <div class="container" style="border-top:1px solid grey;">
-                <div class="row text-center">   
-                    <div class="col-lg-6 col-lg-offset-3">
-                        <ul class="menu">
-                            <li>
-                                <a href="#">בית</a>
-                            </li>
-                                   
-                            <li>
-                                <a href="#">אודות</a>
-                            </li>
-                                   
-                            <li>
-                                <a href="#">Blog</a>
-                            </li>
-                                   
-                            <li>
-                                <a href="#">גלריה</a>
-                            </li>
-                                   
-                            <li>
-                                <a href="#">צור קשר</a>
-                            </li>
-                        </ul>
+                <div class="footer-top"> 
+                   <div class="container">
+                     <div class="col-lg-2 col-xs-12 text-center">
+                         <a href="#"><i class="fa fa-facebook fa-2x"></i>Facebook</a>
+                     </div>
+                      <div class="col-lg-2 col-xs-12 text-center">
+                         <a href="#"><i class="fa fa-twitter fa-2x"></i>Twitter</a>
+                     </div>
+                      <div class="col-lg-2 col-xs-12 text-center">
+                         <a href="#"><i class="fa fa-flickr fa-2x"></i>Flickr</a>
+                     </div>
+                      <div class="col-lg-2 col-xs-12 text-center">
+                         <a href="#"><i class="fa fa-tumblr fa-2x"></i>Tumblr</a>
+                     </div>
+                      <div class="col-lg-2 col-xs-12 text-center">
+                         <a href="#"><i class="fa fa-github fa-2x"></i>Github</a>
+                     </div>
+                      <div class="col-lg-2 col-xs-12 text-center">
+                         <a href="#"><i class="fa fa-google-plus fa-2x"></i>Google</a>
+                     </div>
+                   </div> 
+                </div>  
+                
+                <div class="container" style="border-top:1px solid grey;">
+                    <div class="row text-center">   
+                        <div class="col-lg-6 col-lg-offset-3">
+                            <ul class="menu">
+                                <li>
+                                    <a href="#">בית</a>
+                                </li>
+                                       
+                                <li>
+                                    <a href="#">אודות</a>
+                                </li>
+                                       
+                                <li>
+                                    <a href="#">Blog</a>
+                                </li>
+                                       
+                                <li>
+                                    <a href="#">גלריה</a>
+                                </li>
+                                       
+                                <li>
+                                    <a href="#">צור קשר</a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </footer>
+            </footer>
 
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    
 
-        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-        <script src="./includes/script.js"></script>
-        <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-
-    </body>
+            <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+            <script src="./includes/script.js"></script>
+            <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>    
+        </body>
 </html>
+
+
 

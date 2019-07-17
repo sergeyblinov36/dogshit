@@ -1,22 +1,62 @@
 <?php session_start();
+// if(isset($_SESSION['id']) && !empty($_SESSION['id'])) {
+//    echo 'Set and not empty, and no undefined index error!';
+   
+// }else session_destroy();
+?>
+
+ 
+<?php 
+    include 'php/joins/db.php';
+    //include 'functions.php';
+    //require("functions.php");
+
+    if(!isset($_SESSION["id"]))
+
+     header("Location:login.php");
 
 ?>
 
+<?php 
+    //$userData=getUserData(getId($_SESSION['name']));
+    //$dogData=getDogData(getDogId($_SESSION['name']));
+
+    
+    $query  = "SELECT  u.id, p.name, p.pictur, p.dscription
+
+    FROM `tb_users_212` AS u INNER JOIN `tb_dogs_212` AS 
+
+    p ON p.id = u.id
+
+    ORDER BY p.name;";
+
+    //$model2 = mysqli_query($connection, $dogData);
+    $model = mysqli_query($connection, $query);
+
+    if(!$model) {
+
+        die("DB query failed.");
+
+    }
+
+?>
+
+
 <!DOCTYPE html>
 <html>
-
 
     <head>
         <title>DogFetch</title>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="includes/style.css">
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-        <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>  
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    </head>
-        
+    
+      </head>
+
     <body id="wrapper">
     <header>
         <div class="navbar navbar-custom navbar-static-top" id="colorHed">
@@ -150,151 +190,125 @@
                 </div>               
               </div>
       </header>
+    <main>
+      <section class="container">
+
+        <div id="movelittle">
+          <div class="col-xs-6 col-xs-offset-3">
+                <h4 class="Hh3">הפידבקים שלי </h4>
+          </div>          
+
+          <form class="navbar-form navbar-search" role="search">
+              <div class="input-group input-email input-group-lg">                        
+                <input type="text" class="form-control fg" placeholder=" חפש פידבק..">
+                <div class="input-group-btn" style="width: auto;">
+                  <button type="button" class="btn btn-search btn-info fg">
+                    <span class="label-icon"> חפש  </span>
+                  </button>
+                </div>
+              </div>  
+            </form>        
+
+            <div class="left">
+                <a href="#"><button class="top-droppable folder tooltiper tooltiper-up" data-tooltip="0 file" id="folder1"><i class="fa fa-folder" aria-hidden="true"></i><i class="fa fa-check" aria-hidden="true"></i><p> חיובי</p></button></a>
+                <a href="choosDOG.php"><button class="top-droppable folder tooltiper tooltiper-up" data-tooltip="0 file" id="folder2"><i class="fa fa-folder" aria-hidden="true"></i><i class="fa fa-check" aria-hidden="true"></i><p>שלילי </p></button></a>
+                <a href="#"><button class="top-droppable folder tooltiper tooltiper-up" data-tooltip="0 file" id="folder3"><i class="fa fa-folder" aria-hidden="true"></i><i class="fa fa-check" aria-hidden="true"></i><p>שלילי ישן </p></button></a>
+                <a href="#"><button class="top-droppable folder tooltiper tooltiper-up" data-tooltip="0 file" id="folder4"><i class="fa fa-folder" aria-hidden="true"></i><i class="fa fa-check" aria-hidden="true"></i><p>מיוחד </p></button></a>
+                <a href="#"><button class="top-droppable folder tooltiper tooltiper-up" data-tooltip="0 file" id="folder5"><i class="fa fa-folder" aria-hidden="true"></i><i class="fa fa-check" aria-hidden="true"></i><p>כל מיני </p></button></a>
+            </div>
+      </section>
+
+      <a class="add" href="#">
+        <button class="Mq2"><span class="glyphicon glyphicon-plus" id="size"></button>
+      </a>
 
 
+      <div class="price-table text-center" style="background-color: rgb(255, 255, 255); border-radius: 0px; border-width: 7px; border-style: solid; border-color: rgb(238, 238, 238); transition: all 0.3s ease; color: rgb(255, 255, 255); font-family: Lato, sans-serif; font-size: 16px;">
+          <div class="price-table-heading" style="color: rgb(51, 51, 51); background-image: initial; background-color: rgb(249, 249, 249); padding-top: 2px; padding-bottom: 2px; margin-bottom: 0px;">
+            <p style="margin-bottom: 10px; font-size: 30px; line-height: 1.3;">
+                      
+            </p>
+          </div>
+          <div class="price-table-body" style="background-image: initial; background-color: rgb(119, 178, 88); padding-top: 10px; padding-bottom: 5px; transition: all 0.3s ease;">
+        
+            <p class="value" style="margin-bottom: 10px; font-size: 28px; line-height: 1.3;">
+                      המומלצים<small style="font-size: 16px;">	</small>
+            </p>
+              <small style="font-size: 16px;">
+            <p style="margin-bottom: 10px; font-size: 20px; line-height: 1.3;">
+                      בשימוש לאחרונה
+            </p>
+              </small>
+          </div>
+          <ul class="list-group" style="margin-bottom: 0px; padding-left: 15px; color: rgb(51, 51, 51);">
+              <small style="font-size: 16px;">
+            <p class="list-group-item-w" style="margin-bottom: 0px; margin-left: -15px; line-height: 1.3; padding-top: 5px; padding-bottom: 5px; border-radius: 0px; border-width: 0px; border-style: initial;">
+            הקלטה מספר4 : טובה
+            </p> 
 
-        <main>
-            <div class="container">
-                <form class="form-horizontal" id="moveform" role="form"action="confirm.php" method="GET" >
-                    <h2>הוספת כלב חדש</h2>
-                    <div class="form-group">
-                        <label for="firstName" class="col-sm-3 control-label">שם הכלב</label>
-                        <div class="col-sm-9">
-                            <input type="text" id="name" name="name" placeholder="Dogs Name" class="form-control"  required>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="lastName" class="col-sm-3 control-label">שם המטפל </label>
-                        <div class="col-sm-9">
-                            <input type="text" id="lastName" placeholder="Owners Name" name="id" class="form-control"  required>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="phoneNumber" class="col-sm-3 control-label">מספר ציפ אלקטרוני </label>
-                        <div class="col-sm-9">
-                            <input type="phoneNumber" id="phoneNumber" name="chipId" placeholder="Barkod Namber" class="form-control" required>
-                            <span class="help-block">מספר הציפ על גבי הקולר </span>
-                        </div>
-                    </div>
-                  
-
-                    <div class="form-group">
-                        <label for="birthDate" class="col-sm-3 control-label">תאריך לידה*</label>
-                        <div class="col-sm-9">
-                            <input type="date" id="birthDate" name="birthDate" class="form-control" required>
-                        </div>
-                    </div>
-              
-                    <div class="form-group">
-                            <label for="Height" class="col-sm-3 control-label">גובה* </label>
-                        <div class="col-sm-9">
-                            <input type="number" id="height" name="height" placeholder="Please write your height in centimetres" class="form-control">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                            <label for="weight" class="col-sm-3 control-label">משקל* </label>
-                        <div class="col-sm-9">
-                            <input type="number" id="weight" name="weight" placeholder="Please write your weight in kilograms" class="form-control">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                            <label for="weight" class="col-sm-3 control-label">גזע </label>
-                            <select class="col-sm-9" id="breed" name="breed" value="" placeholder="בחר גזע" required >
-                                    <option> בחר גזע</option>
-                                    <option>לברדור</option>
-                                    <option>פינצר</option>
-                                    <option>פיטבול</option>
-                                    <option>מעורב</option>
-                                    <option>אחר</option>
-                            </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="control-label col-sm-3">מין</label>
-                        <div class="col-sm-6">
-                            <div class="row">
-                                <div class="col-sm-4">
-                                    <label class="radio-inline">
-                                        <input type="radio"  name="gender" id="femaleRadio" value="Female">נקבה
-                                    </label>
-                                </div>
-                                <div class="col-sm-4">
-                                    <label class="radio-inline">
-                                        <input type="radio"  name="gender" id="maleRadio" value="Male">זכר
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div> <!-- /.form-group -->
+            <picture class="list-group-item-g" style="margin-bottom: 0px; margin-left: -15px; line-height: 1.3; background-image: initial; background-color: rgb(249, 249, 249); padding-top: 5px; padding-bottom: 5px; border-radius: 0px; border-width: 0px; border-style: initial;">
+                      הקלטה מספר 8: לא66
+            </p>
+            <p class="list-group-item-w" style="margin-bottom: 0px; margin-left: -15px; line-height: 1.3; padding-top: 5px; padding-bottom: 5px; border-radius: 0px; border-width: 0px; border-style: initial;">
+                      הקלטה מספר 22: שלי ושלו
+          </p>
+            <p class="list-group-item-g" style="margin-bottom: 0px; margin-left: -15px; line-height: 1.3; background-image: initial; background-color: rgb(249, 249, 249); padding-top: 5px; padding-bottom: 5px; border-radius: 0px; border-width: 0px; border-style: initial;">
+                     התחברות לשמע
+            </p>
+            <p class="list-group-item-w" style="margin-bottom: 0px; margin-left: -15px; line-height: 1.3; padding-top: 5px; padding-bottom: 5px; border-radius: 0px; border-width: 0px; border-style: initial;">
+                      -
+            </p>
+            <p class="list-group-item-g" style="margin-bottom: 0px; margin-left: -15px; line-height: 1.3; background-image: initial; background-color: rgb(249, 249, 249); padding-top: 5px; padding-bottom: 5px; border-radius: 0px; border-width: 0px; border-style: initial;">
+                      -
+            </p>
+            <p class="list-group-item-w" style="margin-bottom: 0px; margin-left: -15px; line-height: 1.3; padding-top: 5px; padding-bottom: 5px; border-radius: 0px; border-width: 0px; border-style: initial;">
+                      -
+            </p>
+            <p class="list-group-item-g" style="margin-bottom: 0px; margin-left: -15px; line-height: 1.3; background-image: initial; background-color: rgb(249, 249, 249); padding-top: 5px; padding-bottom: 5px; border-radius: 0px; border-width: 0px; border-style: initial;">
+                      -
+            </p>
+            <p class="list-group-item-w" style="margin-bottom: 0px; margin-left: -15px; line-height: 1.3; padding-top: 5px; padding-bottom: 5px; border-radius: 0px; border-width: 0px; border-style: initial;">
+                      פעיל לאחרונה כ:20 דק
+            </p>
+            <p class="list-group-item-g" style="margin-bottom: 0px; margin-left: -15px; line-height: 1.3; background-image: initial; background-color: rgb(249, 249, 249); padding-top: 5px; padding-bottom: 5px; border-radius: 0px; border-width: 0px; border-style: initial;">
+                      פעיל לאחרונה כ:20 דק
+            </p>
+            <p class="list-group-item-w" style="margin-bottom: 0px; margin-left: -15px; line-height: 1.3; padding-top: 5px; padding-bottom: 5px; border-radius: 0px; border-width: 0px; border-style: initial;">
+                      פעיל כ-3 דקות
+            </p>
+            <p class="list-group-item-g" style="margin-bottom: 0px; margin-left: -15px; line-height: 1.3; background-image: initial; background-color: rgb(249, 249, 249); padding-top: 5px; padding-bottom: 5px; border-radius: 0px; border-width: 0px; border-style: initial;">
+                      -
+            </p>
+            </small>
+          </ul>
+        </div>
 
 
-                    <div class="form-group">
-                        <label for="Height" class="col-sm-3 control-label">התנהגות קיימת </label><br><br>
-                        <div class="listof">
-                            <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="materialChecked2" checked>
-                                <label class="form-check-label" for="materialChecked2">תוקפנות</label>
-                            </div><br>
+    </main>
 
-                            <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="materialChecked2" checked>
-                                <label class="form-check-label" for="materialChecked2">הריסת חפצים</label>
-                            </div><br>
-                            <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="materialChecked2" checked>
-                                <label class="form-check-label" for="materialChecked2">יללות ונביחות</label>
-                            </div><br>
-
-                            <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="materialChecked2" checked>
-                                <label class="form-check-label" for="materialChecked2">צרכים בבית</label>
-                            </div><br> 
-                        </div>                 
-                    </div>
-
-
-                    <div class="form-group">
-                            <label  for="poto" class="col-sm-3 control-label">תמונות</label>
-                            <div class="col-sm-9">
-                                    <input type="file" class="form-control" id="input" name="pics" value="" placeholder="" multiple accept="image/*" >
-                            </div>
-                        </div>
-
-
-
-                    <div class="form-group">
-                        <div class="col-sm-9">
-                            <span class="help-block"></span>
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-block" name="save">שמור</button>
-                </form> <!-- /form -->
-            </div> <!-- ./container -->
-        </main>
-
-        <footer>
+    
+    <footer>
             <div class="footer-top"> 
-               <div class="container">
-                 <div class="col-lg-2 col-xs-12 text-center">
-                     <a href="#"><i class="fa fa-facebook fa-2x"></i>Facebook</a>
-                 </div>
+              <div class="container">
+                <div class="col-lg-2 col-xs-12 text-center">
+                    <a href="#"><i class="fa fa-facebook fa-2x"></i>Facebook</a>
+                </div>
                   <div class="col-lg-2 col-xs-12 text-center">
-                     <a href="#"><i class="fa fa-twitter fa-2x"></i>Twitter</a>
-                 </div>
+                    <a href="#"><i class="fa fa-twitter fa-2x"></i>Twitter</a>
+                </div>
                   <div class="col-lg-2 col-xs-12 text-center">
-                     <a href="#"><i class="fa fa-flickr fa-2x"></i>Flickr</a>
-                 </div>
+                    <a href="#"><i class="fa fa-flickr fa-2x"></i>Flickr</a>
+                </div>
                   <div class="col-lg-2 col-xs-12 text-center">
-                     <a href="#"><i class="fa fa-tumblr fa-2x"></i>Tumblr</a>
-                 </div>
+                    <a href="#"><i class="fa fa-tumblr fa-2x"></i>Tumblr</a>
+                </div>
                   <div class="col-lg-2 col-xs-12 text-center">
-                     <a href="#"><i class="fa fa-github fa-2x"></i>Github</a>
-                 </div>
+                    <a href="#"><i class="fa fa-github fa-2x"></i>Github</a>
+                </div>
                   <div class="col-lg-2 col-xs-12 text-center">
-                     <a href="#"><i class="fa fa-google-plus fa-2x"></i>Google</a>
-                 </div>
-               </div> 
+                    <a href="#"><i class="fa fa-google-plus fa-2x"></i>Google</a>
+                </div>
+              </div> 
             </div>  
             
             <div class="container" style="border-top:1px solid grey;">
@@ -304,19 +318,19 @@
                             <li>
                                 <a href="#">בית</a>
                             </li>
-                                   
+                                  
                             <li>
                                 <a href="#">אודות</a>
                             </li>
-                                   
+                                  
                             <li>
                                 <a href="#">Blog</a>
                             </li>
-                                   
+                                  
                             <li>
                                 <a href="#">גלריה</a>
                             </li>
-                                   
+                                  
                             <li>
                                 <a href="#">צור קשר</a>
                             </li>
@@ -324,16 +338,14 @@
                     </div>
                 </div>
             </div>
-        </footer>
+      </footer>
 
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
-        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-        <script src="./includes/script.js"></script>
-        <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
+
+           <script src="./includes/script.js"></script>
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </body>
-</html>
 
+</html>

@@ -1,0 +1,146 @@
+[{
+    "StationId": 1,
+    "StationName": "לירן",
+    "Dogname": "גולי",
+    "Time": "13:00",
+    "Street": "ספה מרכזית",
+    "Latitude": "11",
+    "Longitude": "11",
+    "Comment": "התראה מספר 6 בשבוע האחרון",
+    "Care": {
+      "Wifi": "לא טופל",
+      "SmartScreen": "טופל",
+      "Conditioner": "טופל",
+      "Light": "טופל"
+    }
+  },
+  {
+    "StationId": 2,
+    "StationName": "לירן",
+    "Dogname": "גולי",
+    "Time": "13:05",
+    "Street": "דלת כניסה ",
+    "Latitude": "12",
+    "Longitude": "12",
+    "Comment": "התראה מספר 3 ",
+    "Care": {
+      "Wifi": "טופל",
+      "SmartScreen": "טופל",
+      "Conditioner": "טופל",
+      "Light": "טופל"
+    }
+  },
+  {
+    "StationId": 3,
+    "StationName": "לירן",
+    "Dogname": "גולי",
+    "Time": "16:56",
+    "Street": " החדר של רון",
+    "Latitude": "32.2865132",
+    "Longitude": "34.8549239",
+    "Comment": "התראה חדשה",
+    "Care": {
+      "Wifi": "לא טופל",
+      "SmartScreen": "טופל",
+      "Conditioner": "טופל",
+      "Light": "טופל"
+    }
+  },
+  {
+    "StationId": 4,
+    "StationName": "אור",
+    "Dogname": "חוליו",
+    "Time": "1:00",
+    "Street": "ספה מרכזית",
+    "Latitude": "32.2865132",
+    "Longitude": "34.8549239",
+    "Comment": "התראה מספר 5",
+    "Care": {
+      "Wifi": "לא טופל",
+      "SmartScreen": " לא טופל",
+      "Conditioner": "טופל",
+      "Light": "טופל"
+    }
+  },
+  {
+    "StationId": 5,
+    "StationName": "רון",
+    "Dogname": "גולי",
+    "Time": " 1:00",
+    "Street": "  ספה מרכזית",
+    "Latitude": "32.2865132",
+    "Longitude": "34.8549239",
+    "Comment": "התראה מספר77 ",
+    "Care": {
+      "Wifi": "טופל",
+      "SmartScreen": "טופל",
+      "Conditioner": "טופל",
+      "Light": "טופל"
+    }
+  },
+  {
+    "StationId": 6,
+    "StationName": "נחום",
+    "Dogname": "מישמש",
+    "Time": "7:00",
+    "Street": "נביחות ",
+    "Latitude": "32.2865132",
+    "Longitude": "34.8549239",
+    "Comment": "התראה מספר 8",
+    "Care": {
+      "Wifi": "טופל",
+      "SmartScreen": "טופל",
+      "Conditioner": "טופל",
+      "Light": "טופל"
+    }
+  },
+  {
+    "StationId": 7,
+    "StationName": "רון",
+    "Dogname": "שימי",
+    "Time": "6:00",
+    "Street": " ספה קטנה",
+    "Latitude": "32.2865132",
+    "Longitude": "34.8549239",
+    "Comment": "התראה חדשה",
+    "Care": {
+      "Wifi": "לא טופל ",
+      "SmartScreen": "טופל",
+      "Conditioner": "טופל",
+      "Light": "טופל"
+    }
+  },
+  {
+    "StationId": 8,
+    "StationName": "רון",
+    "Dogname": "שימי",
+    "Time": "1:00",
+    "Street": "חדר של רון",
+    "Latitude": "32.2865132",
+    "Longitude": "34.8549239",
+    "Comment": "התראה",
+    "Care": {
+      "Wifi": "טופל",
+      "SmartScreen": "טופל",
+      "Conditioner": "טופל",
+      "Light": "טופל"
+    }
+  },
+  {
+    "StationId": 9,
+    "StationName": "רון",
+    "Dogname": "שימי",
+    "Time": "1:00 ",
+    "Street": "  מטבח",
+    "Latitude": "32.2865132",
+    "Longitude": "34.8549239",
+    "Comment": "התראה חדשה",
+    "Care": {
+      "Wifi": "טופל",
+      "SmartScreen": "טופל",
+      "Conditioner": "טופל",
+      "Light": "טופל"
+    }
+  }
+]
+
