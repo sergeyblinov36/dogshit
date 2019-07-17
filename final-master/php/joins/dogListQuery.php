@@ -39,7 +39,7 @@ do{$row = mysqli_fetch_array($res);
                                             echo $human["name"].',';}}while($human); echo'בטיפול של:</p>
                                     <a href="profille.php" class="btn btn-footer2">צפה בפרופיל</a>
 
-                                    <p class="p2">'.$row["name"]. ' : ' .$row["dscription"].'</p>
+                                    <p class="p2">'.$row["name"]. '  ' .$row["description"].'</p>
                                     <ul class="list-inline list-unstyled" style="float: right;">
                                         <li><span><i class="glyphicon glyphicon-calendar"></i> עודכן ב15 במאי </span></li>
                                         <li>|</li>

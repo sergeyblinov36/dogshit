@@ -10,7 +10,7 @@
     include 'php/joins/db.php';
     //include 'functions.php';
     //require("functions.php");
-
+    
     if(!isset($_SESSION["id"]))
 
      header("Location:login.php");
@@ -20,24 +20,30 @@
 <?php 
     //$userData=getUserData(getId($_SESSION['name']));
     //$dogData=getDogData(getDogId($_SESSION['name']));
-
+    $id=$_SESSION["id"];
+    $sql = "SELECT d.*
+            FROM `tb_user-dog_212`u ,`tb_dogs_212` d
+            WHERE u.id='" .$id ."'AND u.snum=d.snum ";
     
-    $query  = "SELECT  u.id, p.name, p.pictur, p.dscription
 
-    FROM `tb_users_212` AS u INNER JOIN `tb_dogs_212` AS 
+    $res = mysqli_query($connection,$sql);
 
-    p ON p.id = u.id
+    // $query  = "SELECT  u.id, p.name, p.pictur, p.dscription
 
-    ORDER BY p.name;";
+    // FROM `tb_users_212` AS u INNER JOIN `tb_dogs_212` AS 
 
-    //$model2 = mysqli_query($connection, $dogData);
-    $model = mysqli_query($connection, $query);
+    // p ON p.id = u.id
 
-    if(!$model) {
+    // ORDER BY p.name;";
 
-        die("DB query failed.");
+    // //$model2 = mysqli_query($connection, $dogData);
+    // $model = mysqli_query($connection, $query);
 
-    }
+    // if(!$model) {
+
+    //     die("DB query failed.");
+
+    // }
 
 ?>
 
@@ -228,11 +234,15 @@
     
               
               echo '<ul class="box">';
-              while($row = mysqli_fetch_assoc($model)) {//results are in associative array. keys are cols names
-
+              while($row = mysqli_fetch_assoc($res)) {//results are in associative array. keys are cols names
+                if(is_array($row)){
+                  if ($row["pictur"]==NULL){
+                     $pic='images/anonim.png';
+                     }
+                 else $pic=$row["pictur"];}
                 //output data from each row
 
-                  echo '<li><div class="circle"><div class="front front-popular" style="background-image: url(' .$row["pictur"]. '); background-repeat: no-repeat; background-size: cover">
+                  echo '<li><div class="circle"><div class="front front-popular" style="background-image: url(' .$pic. '); background-repeat: no-repeat; background-size: cover">
                               <div class="title color-1-font glyphicon glyphicon-star" style="position: inherit; top: -16%;"></div>
                               <div class="price color-1-font"><span class="total">' . $row["name"] . '</span></div>
                               <div class="description">' . $row["dscription"] . '</div>
@@ -253,7 +263,7 @@
 
               //release returned data
 
-              mysqli_free_result($model);
+              // mysqli_free_result($model);
 
               ?>
             </section>

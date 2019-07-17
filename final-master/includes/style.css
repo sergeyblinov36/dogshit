@@ -105,7 +105,7 @@ footer ul li a:hover{
 #wrapper main{
     display: block;
     background: #ffffff;
-    padding-top: 19vh;
+    padding-top: 40vh;
     margin: 0px auto;
 }
 #main-table{padding-top: 37vh !important;}
@@ -253,7 +253,7 @@ header{
     float: left;
     margin: 5%;
     margin-top: 40%;
-    margin-left: 77%;
+    margin-left: 68%;
 }
 .camara{
     position: absolute;
@@ -263,16 +263,16 @@ header{
 }
 .BigButt{
     display: inline-block;
-    width: 30vh;
-    height: 30vh;
+    width: 20vh;
+    height: 20vh;
     border-radius: 50%;
     border: 3px solid #050505;
     color: #050505;
     background-color: #ffffff;
 }
 .BigIcon{
-    width: 20vh;
-    height: 20vh;
+    width: 15vh;
+    height: 15vh;
 }
 .ImgIcon{
     width: 65%;
